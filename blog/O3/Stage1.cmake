@@ -1,0 +1,5 @@
+include(${CMAKE_CURRENT_LIST_DIR}/../Stage1-Base.cmake)
+
+set(CLANG_BOOTSTRAP_CMAKE_ARGS
+  -C ${CMAKE_CURRENT_LIST_DIR}/Stage2.cmake
+  CACHE STRING "")
