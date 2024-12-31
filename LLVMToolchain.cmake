@@ -2,7 +2,7 @@
 # used on any Darwin system to approximate Apple Clang builds.
 
 set(LLVM_ENABLE_PROJECTS "clang;clang-tools-extra;lld" CACHE STRING "")
-set(LLVM_ENABLE_RUNTIMES "compiler-rt;libcxx;libcxxabi" CACHE STRING "")
+set(LLVM_ENABLE_RUNTIMES "compiler-rt;libcxx;libcxxabi;libunwind" CACHE STRING "")
 
 set(LLVM_TARGETS_TO_BUILD AArch64 CACHE STRING "")
 set(CLANG_VENDOR Apple CACHE STRING "")
