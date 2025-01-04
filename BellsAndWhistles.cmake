@@ -1,6 +1,6 @@
 set(LLVM_ENABLE_ASSERTIONS On CACHE BOOL "")
-set(LLVM_TARGETS_TO_BUILD "AArch64" CACHE STRING "")
-set(LLVM_EXPERIMENTAL_TARGETS_TO_BUILD DirectX CACHE STRING "")
+set(LLVM_TARGETS_TO_BUILD Native CACHE STRING "")
+set(LLVM_EXPERIMENTAL_TARGETS_TO_BUILD "DirectX;SPIRV" CACHE STRING "")
 set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "")
 set(CMAKE_INSTALL_PREFIX $ENV{PWD}/install CACHE STRING "")
 set(LLVM_CREATE_XCODE_TOOLCHAIN On CACHE BOOL "")
@@ -17,6 +17,21 @@ set(LLVM_ENABLE_PROJECTS clang
                          mlir CACHE STRING "")
 #set(LLVM_ENABLE_RUNTIMES libcxx
 #                        compiler-rt CACHE STRING "")
+
+if (EXISTS $ENV{HOME}/dev/HLSLTest/)
+  set(LLVM_EXTERNAL_OFFLOADTEST_SOURCE_DIR $ENV{HOME}/dev/HLSLTest/ CACHE STRING "")
+  set(LLVM_EXTERNAL_PROJECTS OffloadTest CACHE STRING "")
+endif()
+
+if (EXISTS $ENV{HOME}/dev/offload-golden-images/)
+  set(GOLDENIMAGE_DIR $ENV{HOME}/dev/offload-golden-images/ CACHE STRING "")
+endif()
+
+
+if (EXISTS $ENV{HOME}/dev/DirectXShaderCompiler/build-rel/bin/)
+  set(DXC_DIR $ENV{HOME}/dev/DirectXShaderCompiler/build-rel/bin/ CACHE STRING "")
+endif()
+
 
 # setup toolchain
 set(LLVM_INSTALL_TOOLCHAIN_ONLY ON CACHE BOOL "")
